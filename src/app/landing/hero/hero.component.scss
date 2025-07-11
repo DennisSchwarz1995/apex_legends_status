@@ -1,0 +1,7 @@
+@import "globals";
+
+.hero {
+    @include size(100%, calc(100dvh - 120px));
+    @include padding(40px 60px...);
+    background-color: $color-primary;
+}
