@@ -1,0 +1,29 @@
+.primary-button {
+  @include button-style($color-primary);
+  @include font-style($font-size-18, $font-weight-700, $color-text-primary);
+  &:hover:not(:disabled) {
+    background-color: $color-secondary;
+  }
+  &:active:not(:disabled) {
+    border-radius: 50px;
+    color: $color-primary;
+    background-color: $color-secondary;
+  }
+}
+
+.secondary-button {
+  @include button-style(
+    $color-primary,
+    $bor: 1px solid $color-primary
+  );
+  @include font-style($font-size-18, $font-weight-700, $color-primary);
+  &:hover:not(:disabled) {
+    background-color: $color-secondary;
+    color: $color-primary;
+  }
+  &:active:not(:disabled) {
+    border-radius: 50px;
+    color: $color-primary;
+    background-color: $color-primary;
+  }
+}

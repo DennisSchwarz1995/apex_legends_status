@@ -1,0 +1,107 @@
+@mixin position(
+  $pos: null,
+  $top: null,
+  $left: null,
+  $bot: null,
+  $rig: null,
+  $zi: null
+) {
+  position: $pos;
+  top: $top;
+  left: $left;
+  bottom: $bot;
+  right: $rig;
+  z-index: $zi;
+}
+
+@mixin display-flex(
+  $dis: flex,
+  $jc: center,
+  $ai: center,
+  $fd: row,
+  $gap: null
+) {
+  display: $dis;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fd;
+  gap: $gap;
+}
+
+@mixin button-style($bg-col, $txt-col: null, $pad: 12px 25px, $bor: none) {
+  @include display-flex($gap: 10px);
+  background-color: $bg-col;
+  color: $txt-col;
+  padding: $pad;
+  border-radius: 50px;
+  border: $bor;
+  outline: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 225ms ease-in-out, transform 225ms ease-in-out;
+  &:disabled {
+    border: none;
+    color:  $color-primary;
+    background-color: $color-bg;
+    cursor: not-allowed;
+  }
+}
+
+@mixin size($width: null, $height: null, $pad: null) {
+  width: $width;
+  height: $height;
+  padding: $pad;
+}
+
+@mixin font-style($fs: null, $fw: null, $c: null, $ff: null) {
+  font-size: $fs;
+  font-weight: $fw;
+  color: $c;
+  font-family: $ff;
+}
+
+@mixin href-style($bor: $color-border-primary, $bg: null) {
+  @include display-flex($gap: 10px);
+  @include font-style($font-size-18, $font-weight-400, $color-text-primary);
+  @include border-style(1px, solid, transparent);
+  @include padding(10px, 15px);
+  text-decoration: none;
+  &:hover {
+    @include font-style($font-size-18, $font-weight-500, $color-text-secondary);
+    @include cursorPointer();
+    @include border-style(1px, solid, $bor, 30px);
+    background: $bg;
+  }
+}
+
+@mixin input-style($pad: null, $bg: null) {
+  @include padding($pad...);
+  @include border-style(1px, solid, $color-border-primary, 30px);
+  @include cursorPointer();
+  @include size(100%);
+  @include font-style($font-size-18, $font-weight-500, $color-text-primary);
+  background-color: $bg;
+  &::placeholder {
+    @include font-style($font-size-18, $font-weight-500, $color-text-secondary);
+  }
+  &:hover {
+    border-color: $color-secondary;
+  }
+  &:focus {
+    border-color: $color-highlight-primary;
+  }
+}
+
+@mixin padding($top, $right: $top, $bottom: $top, $left: $right) {
+  padding: $top $right $bottom $left;
+}
+
+@mixin cursorPointer($p: pointer) {
+  cursor: $p;
+}
+
+@mixin border-style($size: 1px, $style: solid, $color: $color-text-primary, $radius: null, $out: none) {
+  border: $size $style $color;
+  border-radius: $radius;
+  outline: $out;
+}
