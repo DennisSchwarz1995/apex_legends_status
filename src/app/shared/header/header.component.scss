@@ -1,0 +1,66 @@
+@import 'globals';
+
+.header {
+  @include display-flex($jc: space-between);
+  @include size(100%, 120px);
+  @include padding(40px 60px...);
+  background-color: $color-primary;
+}
+
+.logo-container {
+  @include display-flex($gap: 4px);
+}
+
+.logo {
+  @include font-style($font-size-24, $font-weight-600, $color-text-primary);
+  transition: 225ms ease-in-out;
+    &:hover {
+    @include cursorPointer();
+    -webkit-text-stroke: 0.25px $color-secondary;
+
+  }
+}
+
+.search-bar-container {
+  @include display-flex($ai: flex-start, $fd: column, $gap: 4px);
+  @include position(relative);
+  @include size(30%);
+  transition: 225ms ease-in-out;
+  &:focus-within {
+    .search-bar-icon {
+      filter: grayscale(0) brightness(1.2) sepia(1) hue-rotate(200deg);
+      transition: filter 225ms ease-in-out;
+    }
+  }
+}
+
+.search-bar {
+  @include input-style(8px 12px 8px 60px, $color-primary);
+  transition: 225ms ease-in-out;
+}
+
+.search-bar-icon-container {
+  @include display-flex();
+  @include size(24px, 24px);
+  @include position(absolute, $left: 24px);
+  border-radius: 30px;
+  transition: 225ms ease-in-out;
+}
+
+.search-bar-icon {
+  @include position(absolute);
+  @include size(24px, 24px);
+  filter: grayscale(1) brightness(0.8);
+}
+
+.burger-menu-container {
+    @include display-flex();
+    @include size(48px, 48px);
+    @include border-style($color: transparent, $radius: 30px);
+    transition: 225ms ease-in-out;
+    &:hover {
+        border-color: $color-secondary;
+        background: $color-highlight-primary;
+        @include cursorPointer();
+    }
+}
